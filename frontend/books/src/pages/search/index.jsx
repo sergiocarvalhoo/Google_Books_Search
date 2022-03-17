@@ -3,10 +3,18 @@ import "./index.css"
 
 function Search() {
     return (
-      <div>
-        <h1>Search</h1>
-        <a href="/bookdetail">detalhes</a>
+      <div className="bloco-body">
+      <div className="bloco-login-google">
+        <h1>BooksAPI</h1>
+        <input type="text" placeholder="Insira o nome do livro" />
+         
+         <div className="bloco-mostra-livros"> 
+             <div></div>
+            
+         </div>
+
       </div>
+    </div>
     );
   }
   

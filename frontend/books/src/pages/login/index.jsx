@@ -2,12 +2,16 @@ import React from "react"
 import "./index.css"
 
 function Login() {
-    return (
-      <div>
-        <h1>Login</h1>
-        <a href="/booksearch">buscar</a>
+  return (
+    <div className="bloco-body">
+      <div className="bloco-login-google">
+        <h1>BooksAPI</h1>
+        <a href="/booksearch">
+          <button>Colocar o botão do google aqui</button>
+        </a>
       </div>
-    );
-  }
-  
-  export default Login;
+    </div>
+  );
+}
+
+export default Login;
