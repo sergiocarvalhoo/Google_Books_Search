@@ -7,21 +7,31 @@
     color: rgb(200, 200, 200);
 }
 
-.bloco-login-google {
-    /*border: 1px solid red;*/
+.bloco-login-google>h1 {
+    font-size: 50px;
+}
+.bloco-login-google>button {
+    margin-top: 10px;
+    width: 80px;
+    border-radius: 5px;
+    color: aliceblue;
+    background: blueviolet;
+    border: none;
+    height: 30px;
+    cursor: pointer;
 }
 
 .bloco-mostra-livros {
     width: 100%;
-    height: 100px;
     display: flex;
+    flex-wrap: wrap;
     margin-top: 30px;
-    justify-content: space-around;
-    /*border: 1px solid red;*/
+    justify-content: center;
 }
 
 .bloco-mostra-livros>div{
-    width: 60px;
-    height: 100px;
-    border: 1px solid greenyellow;
+    width: 80px;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 150px;
 }

@@ -1,0 +1,57 @@
+.bloco-detalhes{
+    width: 800px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.bloco-detalhes>h1{
+    text-align: center;
+    margin-top: 20px;
+    color: blueviolet;
+    font-size: 40px;
+}
+.bloco-info-img{
+    display: flex;
+    margin-top: 40px;
+}
+.bloco-info-img>img{
+    width: 200px;
+    height: 300px;
+}
+.bloco-img{
+ width: 40%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.bloco-info{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.bloco-info>h3{
+    color: rgb(146, 146, 146);
+    font-size: 30px;
+    margin-bottom:15px;
+}
+.bloco-info>p{
+    margin-bottom: 10px;
+}
+.bloco-info>h4{
+   font-size: 20px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+.bloco-info>textarea{
+    height: 80px;
+}
+.bloco-info>button{
+    margin-top: 10px;
+    width: 80px;
+    border-radius: 5px;
+    color: aliceblue;
+    background: blueviolet;
+    border: none;
+    height: 30px;
+    cursor: pointer;
+}

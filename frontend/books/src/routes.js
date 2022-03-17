@@ -13,7 +13,6 @@ function Rotas(){
                 <Route path="/" exact  element={<Login />} />
                 <Route path="/booksearch" exact  element={<Search />} />
                 <Route path="/bookdetail" exact  element={<BookDetail />} />
-
             </Routes>
         </BrowserRouter>
     )
