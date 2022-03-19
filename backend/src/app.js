@@ -1,5 +1,6 @@
-require('dotenv').config()
+require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 
 const port = process.env.PORT;
 
@@ -8,11 +9,13 @@ const booksRouter = require("./routes/books");
 
 const app = express();
 
+app.use(cors());
+
 app.use(loginRouter);
 app.use(booksRouter);
 
 app.listen(port, () => {
-  console.log(`Books API listening on: http://localhost:${port}/login`);
+  console.log(`Books API listening on: http://localhost:${port}`);
 });
 
 module.exports = app;
