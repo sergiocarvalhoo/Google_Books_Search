@@ -55,3 +55,10 @@
     height: 30px;
     cursor: pointer;
 }
+.bloco-comentario{
+    margin-top: 30px;
+}
+
+.bloco-comentario>p{
+    margin: 15px 15px;
+}

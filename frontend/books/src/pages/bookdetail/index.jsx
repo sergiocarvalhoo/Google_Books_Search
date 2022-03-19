@@ -21,6 +21,13 @@ function BookDetail() {
               <textarea></textarea>
               <button>Comentar</button>
 
+              <div className="bloco-comentario">
+                <p><b>10/02/2022 - JHONNY DOE.</b>o melhor livro do mundo, li e vou ler mais e mais</p>
+                <p><b>10/03/2022 - JHONNY DOE.</b>o melhor livro do mundo</p>
+                <p><b>10/05/2022 - JHONNY DOE.</b>o melhor livro do mundo</p>
+                <p><b>10/08/2022 - JHONNY DOE.</b>o melhor livro do mundo</p>
+              </div>
+
           </div>
         </div>
       </div>
