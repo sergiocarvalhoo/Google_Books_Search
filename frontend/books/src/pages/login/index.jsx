@@ -1,34 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.css";
-import { api } from "../../services/api";
-import GoogleLogin, { GoogleLogout } from "react-google-login";
+import { GoogleLogin } from "react-google-login";
 
-export default function Login() {
-  const [user, setUser] = useState("");
-  const [token, setToken] = useState("");
-
+function Login() {
   const handleLoginFailure = (result) => {
     alert("Unfortunately, login failed, please try again. \n\n" + result);
   };
 
   const handleLogin = async (googleData) => {
-    setToken(JSON.stringify(googleData.tokenId));
-
     const { profileObj } = googleData;
 
-    setUser(JSON.stringify(profileObj));
-
-    console.log(user);
+    localStorage.setItem("user", JSON.stringify(profileObj));
+    localStorage.setItem("logged", true);
 
     alert(`User: ${profileObj.name} successfully logged in`);
-  };
 
-  const handleLogoutFailure = (result) => {
-    alert("Unfortunately, logout failed, please try again. \n\n" + result);
-  };
-
-  const handleLogout = (result) => {
-    alert("Successfully logged out. \n\n" + result);
+    window.location.href = "/booksearch";
   };
 
   return (
@@ -45,14 +32,8 @@ export default function Login() {
         cookiePolicy={"single_host_origin"}
         isSignedIn={true}
       />
-      <h1>Logout:</h1>
-      <GoogleLogout
-        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-        buttonText="Logout"
-        onLogoutSuccess={handleLogout}
-        onFailure={handleLogoutFailure}
-        cookiePolicy={"single_host_origin"}
-      />
     </div>
   );
 }
+
+export default Login;
