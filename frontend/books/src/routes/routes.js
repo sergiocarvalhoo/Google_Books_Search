@@ -6,9 +6,9 @@ import Search from "../pages/search";
 import BookDetail from "../pages/bookdetail";
 
 function RequireAuth({ children, redirectTo }) {
-  const userIsLogged = localStorage.getItem("logged");
+  const userToken = localStorage.getItem("token");
 
-  if (userIsLogged) {
+  if (userToken) {
     return children;
   } else {
     return <Navigate to={redirectTo} />;

@@ -12,7 +12,7 @@ function Search() {
 
   const handleLogout = (result) => {
     localStorage.removeItem("user");
-    localStorage.removeItem("logged");
+    localStorage.removeItem("token");
 
     alert("Successfully logged out.");
 

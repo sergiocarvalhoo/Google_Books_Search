@@ -8,10 +8,10 @@ function Login() {
   };
 
   const handleLogin = async (googleData) => {
-    const { profileObj } = googleData;
+    const { profileObj, tokenObj } = googleData;
 
     localStorage.setItem("user", JSON.stringify(profileObj));
-    localStorage.setItem("logged", true);
+    localStorage.setItem("token", JSON.stringify(tokenObj.access_token));
 
     alert(`User: ${profileObj.name} successfully logged in`);
 
