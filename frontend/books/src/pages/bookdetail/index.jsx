@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { GoogleLogout } from "react-google-login";
 
-const userStorage = localStorage.getItem("user");
-const userIsLogged = localStorage.getItem("logged");
+
 
 function BookDetail() {
+
+  const bookStorage = localStorage.getItem('book')
+  const book = JSON.parse(bookStorage);
+
+
   const handleLogoutFailure = (result) => {
     alert("Unfortunately, logout failed, please try again. \n\n" + result);
   };
@@ -20,21 +24,24 @@ function BookDetail() {
   };
 
   return (
+
     <div className="bloco-detalhes">
       <h1>BooksAPI</h1>
       <a href="/booksearch">Voltar a busca</a>
       <div className="bloco-info-img">
         <div className="bloco-img">
-          <img src="https://picsum.photos/200/300" alt="" />
+          <img src={book.capa} alt="" />
         </div>
         <div className="bloco-info">
-          <h3>Nome do Livro</h3>
-          <h4>Snopse</h4>
+          <h3>{book.titulo}</h3>
+          <h4>Autor: {book.autores}</h4>
+          <h4>Editora: {book.editora}</h4>
+          <h4>Data de lançamento: {book.dataLancamento}</h4>
+          <h4>{book.qtdPaginas} páginas</h4>
+          <h4>Catégoria: {book.categoria}</h4>
+          <h4>Descrição</h4>
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis
-            debitis hic ab neque expedita? Fuga, quisquam corporis porro
-            distinctio voluptate eveniet! Laudantium sed laboriosam doloremque
-            sint cum facilis in quisquam.
+            {book.descricao}
           </p>
           <h4>Comentário</h4>
           <textarea></textarea>
@@ -66,7 +73,10 @@ function BookDetail() {
         cookiePolicy={"single_host_origin"}
       />
     </div>
+
   );
 }
 
 export default BookDetail;
+
+

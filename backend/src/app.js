@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-const port = process.env.PORT;
+const port = 4000;
 
 const loginRouter = require("./routes/login");
 const booksRouter = require("./routes/books");
@@ -10,7 +10,7 @@ const booksRouter = require("./routes/books");
 const app = express();
 
 app.use(cors());
-
+app.use(express.json())
 app.use(loginRouter);
 app.use(booksRouter);
 

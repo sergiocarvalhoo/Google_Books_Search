@@ -1,9 +1,8 @@
-var express = require("express");
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-//  GET Books page.
-router.get("/books", (req, res) => {
-  res.send("Book search endpoint...");
-});
+const {searchBooks} = require('../controllers/booksController');
+
+router.post('/search', searchBooks);
 
 module.exports = router;
