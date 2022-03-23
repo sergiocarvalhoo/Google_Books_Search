@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import { GoogleLogout } from "react-google-login";
 
-
-
 function BookDetail() {
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  const bookStorage = localStorage.getItem('book')
+  const bookStorage = localStorage.getItem("book");
   const book = JSON.parse(bookStorage);
-
 
   const handleLogoutFailure = (result) => {
     alert("Unfortunately, logout failed, please try again. \n\n" + result);
@@ -24,7 +22,6 @@ function BookDetail() {
   };
 
   return (
-
     <div className="bloco-detalhes">
       <h1>BooksAPI</h1>
       <a href="/booksearch">Voltar a busca</a>
@@ -40,9 +37,7 @@ function BookDetail() {
           <h4>{book.qtdPaginas} páginas</h4>
           <h4>Catégoria: {book.categoria}</h4>
           <h4>Descrição</h4>
-          <p>
-            {book.descricao}
-          </p>
+          <p>{book.descricao}</p>
           <h4>Comentário</h4>
           <textarea></textarea>
           <button>Comentar</button>
@@ -64,7 +59,7 @@ function BookDetail() {
           </div>
         </div>
       </div>
-      <h1>Logout:</h1>
+      <h3>You are logged in as: {user.givenName}</h3>
       <GoogleLogout
         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
         buttonText="Logout"
@@ -73,10 +68,7 @@ function BookDetail() {
         cookiePolicy={"single_host_origin"}
       />
     </div>
-
   );
 }
 
 export default BookDetail;
-
-

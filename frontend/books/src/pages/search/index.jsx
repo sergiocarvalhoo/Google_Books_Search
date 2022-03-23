@@ -4,9 +4,10 @@ import { GoogleLogout } from "react-google-login";
 import { api } from "../../services/api";
 import { Book } from "../../components/Book";
 
-function Search () {
+function Search() {
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  const [bookTitle, setBookTitle] = useState('');
+  const [bookTitle, setBookTitle] = useState("");
   const [books, setBooks] = useState([]);
 
   const handleLogoutFailure = (result) => {
@@ -22,82 +23,68 @@ function Search () {
     window.location.href = "/";
   };
 
-
-  async function handleSearchBook (e) {
-
+  async function handleSearchBook(e) {
     e.preventDefault();
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
     try {
-
-      const response = await api.post('/search', {bookTitle, token: JSON.parse(token)});
-      const {items} = response.data;
+      const response = await api.post("/search", {
+        bookTitle,
+        token: JSON.parse(token),
+      });
+      const { items } = response.data;
 
       setBooks(items);
-      
     } catch (err) {
       alert(err);
     }
-
   }
 
   const handleRenderAutor = (autores) => {
-
-    return autores ? autores : ['Não Informado'];
-
-  }
+    return autores ? autores : ["Não Informado"];
+  };
 
   const handleImageLink = (imageLinks) => {
-
-    return imageLinks ? imageLinks.thumbnail : 'https://livrofacil.vteximg.com.br/arquivos/ids/182674-1000-1000/9788538570455.jpg?v=636777367062400000';
-
-  }
+    return imageLinks
+      ? imageLinks.thumbnail
+      : "https://livrofacil.vteximg.com.br/arquivos/ids/182674-1000-1000/9788538570455.jpg?v=636777367062400000";
+  };
 
   const handleRenderTitle = (title) => {
-
-    return title ? title : ''
-
-  }
-
-
-
+    return title ? title : "";
+  };
 
   return (
-
     <div className="bloco-body">
       <div className="bloco-login-google">
-        <h1>BooksAPI</h1>
+        <h1>Welcome to the book search app.</h1>
         <form onSubmit={handleSearchBook}>
-          <input 
-            type="text" 
-            placeholder="Insira o nome do livro" 
+          <input
+            type="text"
+            placeholder="Enter book name:"
             onChange={(e) => setBookTitle(e.target.value)}
           />
           <button type="submit">Pesquisar</button>
         </form>
 
         <div className="bloco-mostra-livros">
-          {
-            books.map((book, index) => (
-
-              <Book 
-                key={index}
-                id={book.id}
-                capa={handleImageLink(book.volumeInfo.imageLinks)}
-                autores={handleRenderAutor(book.volumeInfo.authors)}
-                categoria={book.volumeInfo.categories}
-                dataLancamento={book.volumeInfo.publishedDate}
-                editora={book.volumeInfo.publisher}
-                titulo={handleRenderTitle(book.volumeInfo.title)}
-                qtdPaginas={book.volumeInfo.pageCount}
-                descricao={book.volumeInfo.description}
-              />
-
-            ))
-          }
+          {books.map((book, index) => (
+            <Book
+              key={index}
+              id={book.id}
+              capa={handleImageLink(book.volumeInfo.imageLinks)}
+              autores={handleRenderAutor(book.volumeInfo.authors)}
+              categoria={book.volumeInfo.categories}
+              dataLancamento={book.volumeInfo.publishedDate}
+              editora={book.volumeInfo.publisher}
+              titulo={handleRenderTitle(book.volumeInfo.title)}
+              qtdPaginas={book.volumeInfo.pageCount}
+              descricao={book.volumeInfo.description}
+            />
+          ))}
         </div>
-        <h1>Logout:</h1>
+        <h3>You are logged in as: {user.givenName}</h3>
         <GoogleLogout
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
           buttonText="Logout"

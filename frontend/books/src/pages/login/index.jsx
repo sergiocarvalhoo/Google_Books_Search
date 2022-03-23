@@ -10,8 +10,6 @@ function Login() {
   const handleLogin = async (googleData) => {
     const { profileObj, tokenObj } = googleData;
 
-    console.log(tokenObj.access_token)
-
     localStorage.setItem("user", JSON.stringify(profileObj));
     localStorage.setItem("token", JSON.stringify(tokenObj.access_token));
 
@@ -23,7 +21,7 @@ function Login() {
   return (
     <div className="bloco-body">
       <div className="bloco-login-google">
-        <h1>BooksAPI</h1>
+        <h1>Welcome to the book search app.</h1>
       </div>
       <h1>Login:</h1>
       <GoogleLogin
