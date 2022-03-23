@@ -8,8 +8,9 @@ function Login() {
   };
 
   const handleLogin = async (googleData) => {
-    const { profileObj, tokenObj } = googleData;
+    const { profileObj, tokenObj, googleId } = googleData;
 
+    localStorage.setItem("user_id", googleId)
     localStorage.setItem("user", JSON.stringify(profileObj));
     localStorage.setItem("token", JSON.stringify(tokenObj.access_token));
 

@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import { GoogleLogout } from "react-google-login";
+import { api } from "../../services/api";
 
 function BookDetail() {
   const user = JSON.parse(localStorage.getItem("user"));
+  const user_id = localStorage.getItem("user_id");
 
   const bookStorage = localStorage.getItem("book");
   const book = JSON.parse(bookStorage);
+
+  const [comment, setComment] = useState("");
 
   const handleLogoutFailure = (result) => {
     alert("Unfortunately, logout failed, please try again. \n\n" + result);
@@ -20,6 +24,21 @@ function BookDetail() {
 
     window.location.href = "/";
   };
+
+  async function handleCreateComment(e) {
+    e.preventDefault();
+
+    try {
+      const response = await api.post("/comment", {
+        user_id: user_id,
+        book_id: book.id,
+        comment: comment,
+      });
+      alert("Comment successfully added!!")
+    } catch (err) {
+      alert(err);
+    }
+  }
 
   return (
     <div className="bloco-detalhes">
@@ -39,8 +58,15 @@ function BookDetail() {
           <h4>Descrição</h4>
           <p>{book.descricao}</p>
           <h4>Comentário</h4>
-          <textarea></textarea>
-          <button>Comentar</button>
+
+          <form onSubmit={handleCreateComment}>
+            <textarea
+              type="text"
+              placeholder="Enter your comment:"
+              onChange={(e) => setComment(e.target.value)}
+            />
+            <button type="submit">Comment</button>
+          </form>
 
           <div className="bloco-comentario">
             <p>
