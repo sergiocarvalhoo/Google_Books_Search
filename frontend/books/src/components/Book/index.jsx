@@ -1,6 +1,6 @@
 
 import React from 'react';
-
+import "./Book.module.css"
 
 export const Book = ({id, titulo, autores, descricao, capa, editora, dataLancamento, qtdPaginas, categoria}) => {
 
@@ -28,14 +28,10 @@ export const Book = ({id, titulo, autores, descricao, capa, editora, dataLancame
 
         <div onClick={handleRedirectToBookDetail}>
             <div>
-               <img src={capa} alt="Capa do Livro" />
+               <img className='capalivro' src={capa} alt="Capa do Livro" />
             </div>
             <div>   
-                <p>{categoria}</p>
-                <h2>{titulo}</h2>
-                <h4>{autores.map(author => author)} - {dataLancamento}</h4>
-                <p>{editora}</p>
-                <p>{qtdPaginas} páginas</p>
+                <h2 className='tituloLivro' >{titulo}</h2>
             </div>
         </div>
 

@@ -10,6 +10,7 @@ function Search() {
   const [bookTitle, setBookTitle] = useState("");
   const [books, setBooks] = useState([]);
 
+
   const handleLogoutFailure = (result) => {
     alert("Unfortunately, logout failed, please try again. \n\n" + result);
   };
@@ -56,9 +57,9 @@ function Search() {
   };
 
   return (
-    <div className="bloco-body">
-      <div className="bloco-login-google">
-        <h1>Welcome to the book search app.</h1>
+    <div className="bloco-body-seach">
+      <div className="bloco-login-google-seach">
+        <h1>Welcome to the book search app</h1>
         <form onSubmit={handleSearchBook}>
           <input
             type="text"

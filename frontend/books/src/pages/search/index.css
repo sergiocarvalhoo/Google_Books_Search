@@ -1,4 +1,16 @@
-.bloco-login-google>input {
+.bloco-body-seach{
+   width: 90%;
+   margin: 150px auto;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+.bloco-login-google-seach{
+    width: 100%;
+}
+
+.bloco-login-google-seach>form>input {
     width: 290px;
     height: 30px;
     border-radius: 3px;
@@ -7,10 +19,12 @@
     color: rgb(200, 200, 200);
 }
 
-.bloco-login-google>h1 {
+.bloco-login-google-seach>h1 {
+    color: blueviolet;
+    margin-bottom: 20px;
     font-size: 50px;
 }
-.bloco-login-google>button {
+.bloco-login-google-seach>form>button {
     margin-top: 10px;
     width: 80px;
     border-radius: 5px;
@@ -31,7 +45,17 @@
 
 .bloco-mostra-livros>div{
     width: 80px;
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 150px;
+    margin: 10px 5px 10px 5px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    flex-direction: column;
+}
+.capalivro{
+    height: 93px;
+    width: 78px;
+}
+.tituloLivro{
+ font-size: 10px;
+ color: grey;
 }

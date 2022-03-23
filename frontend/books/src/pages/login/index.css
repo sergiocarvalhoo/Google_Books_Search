@@ -21,5 +21,12 @@
 }
 .bloco-login-google>h1{
     color: blueviolet;
-    margin-bottom:20px;
+    margin-bottom:17px;
+}
+.bloco-login-google>h4{
+    margin-top: 15px;
+}
+
+.bloco-login-google>button{
+ width: 194px !important;
 }
