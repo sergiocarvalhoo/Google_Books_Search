@@ -28,9 +28,10 @@ export const Book = ({id, titulo, autores, descricao, capa, editora, dataLancame
 
         <div onClick={handleRedirectToBookDetail}>
             <div>
-               <img className='capalivro' src={capa} alt="Capa do Livro" />
-            </div>
-            <div>   
+               <img 
+                    className="capalivro" 
+                    src={capa} alt="Capa do Livro"    
+                />
                 <h2 className='tituloLivro' >{titulo}</h2>
             </div>
         </div>

@@ -29,7 +29,7 @@ function BookDetail() {
     window.location.href = "/";
   };
 
-  async function handleCreateComment (e) {
+  async function handleCreateComment(e) {
     e.preventDefault();
 
     try {
@@ -46,14 +46,14 @@ function BookDetail() {
 
       if (message) {
         alert(message);
-      } 
+      }
 
     } catch (err) {
       alert(err);
     }
   }
 
-  async function handleListCommnets () {
+  async function handleListCommnets() {
 
     try {
 
@@ -74,13 +74,13 @@ function BookDetail() {
 
   }
 
-  async function handleDeleteComment (comment_id) {
+  async function handleDeleteComment(comment_id) {
 
     try {
 
       const response = await api.delete(`/comment/${comment_id}`);
       const { message } = response.data;
-  
+
       if (message !== "Comment successfully deleted!") {
         alert(message);
       }
@@ -96,7 +96,7 @@ function BookDetail() {
   useEffect(() => {
     handleListCommnets()
   }, [comment])
-  
+
 
   return (
     <div className="bloco-detalhes">
@@ -105,6 +105,17 @@ function BookDetail() {
       <div className="bloco-info-img">
         <div className="bloco-img">
           <img src={book.capa} alt="" />
+          <div>
+            <h3>Olá, {user.givenName} !</h3>
+            <GoogleLogout
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+              buttonText="Sair"
+              onLogoutSuccess={handleLogout}
+              onFailure={handleLogoutFailure}
+              cookiePolicy={"single_host_origin"}
+              className="btnLogout"
+            />
+          </div>
         </div>
         <div className="bloco-info">
           <h3>{book.titulo}</h3>
@@ -113,48 +124,41 @@ function BookDetail() {
           <h4>Data de lançamento: {book.dataLancamento}</h4>
           <h4>{book.qtdPaginas} páginas</h4>
           <h4>Catégoria: {book.categoria}</h4>
-          <h4>Descrição</h4>
-          <p>{book.descricao}</p>
-          <h4>Comentário</h4>
+          <p className="title">Descrição: </p>
+          <p className="descricao">{book.descricao}</p>
+          <p className="title">Adicionar Comentário: </p>
 
-          <form onSubmit={handleCreateComment}>
+          <form className="form" onSubmit={handleCreateComment}>
             <textarea
               type="text"
               value={comment}
-              placeholder="Enter your comment:"
+              placeholder="Digite aqui o comentário: "
               onChange={(e) => setComment(e.target.value)}
+              className="input-form"
             />
-            <button type="submit">Comment</button>
+            <button type="submit" className="btn-enviar">Comentar</button>
           </form>
 
           <div className="bloco-comentario">
-           {
-             comments.map((comment, index) => (
+            {
+              comments.map((comment, index) => (
 
-              <Comment 
-                key={index}
-                author={comment.author}
-                book_id={comment.book_id}
-                comment_id={comment.id}
-                mensagem={comment.comment}
-                user_id={comment.user_id}
-                deleteComment={handleDeleteComment}
-                userLogged={parseInt(user_id)} //Usuário logado
-              />
+                <Comment
+                  key={index}
+                  author={comment.author}
+                  book_id={comment.book_id}
+                  comment_id={comment.id}
+                  mensagem={comment.comment}
+                  user_id={comment.user_id}
+                  deleteComment={handleDeleteComment}
+                  userLogged={parseInt(user_id)} //Usuário logado
+                />
 
-             ))
-           }
+              ))
+            }
           </div>
         </div>
       </div>
-      <h3>You are logged in as: {user.givenName}</h3>
-      <GoogleLogout
-        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-        buttonText="Logout"
-        onLogoutSuccess={handleLogout}
-        onFailure={handleLogoutFailure}
-        cookiePolicy={"single_host_origin"}
-      />
     </div>
   );
 }

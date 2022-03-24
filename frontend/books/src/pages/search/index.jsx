@@ -49,7 +49,7 @@ function Search() {
   const handleImageLink = (imageLinks) => {
     return imageLinks
       ? imageLinks.thumbnail
-      : "https://livrofacil.vteximg.com.br/arquivos/ids/182674-1000-1000/9788538570455.jpg?v=636777367062400000";
+      : "https://gabrielchalita.com.br/wp-content/uploads/2019/12/semcapa.png";
   };
 
   const handleRenderTitle = (title) => {
@@ -59,11 +59,11 @@ function Search() {
   return (
     <div className="bloco-body-seach">
       <div className="bloco-login-google-seach">
-        <h1>Welcome to the book search app</h1>
+        <h1>Pesquisa de Livros</h1>
         <form onSubmit={handleSearchBook}>
           <input
             type="text"
-            placeholder="Enter book name:"
+            placeholder="Digite o nome do livro :"
             onChange={(e) => setBookTitle(e.target.value)}
           />
           <button type="submit">Pesquisar</button>
@@ -85,10 +85,10 @@ function Search() {
             />
           ))}
         </div>
-        <h3>You are logged in as: {user.givenName}</h3>
+        <h3>Olá, {user.givenName} !</h3>
         <GoogleLogout
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-          buttonText="Logout"
+          buttonText="Sair"
           onLogoutSuccess={handleLogout}
           onFailure={handleLogoutFailure}
           cookiePolicy={"single_host_origin"}

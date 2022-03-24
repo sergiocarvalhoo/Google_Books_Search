@@ -22,11 +22,10 @@ function Login() {
   return (
     <div className="bloco-body">
       <div className="bloco-login-google">
-        <h1>Welcome to the book search app.</h1>
-        <h4>Login:</h4>
+        <h1>Pesquisa de Livros</h1>
         <GoogleLogin
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-          buttonText="Login with Google Account"
+          buttonText="Entrar com o Google"
           onSuccess={handleLogin}
           onFailure={handleLoginFailure}
           cookiePolicy={"single_host_origin"}

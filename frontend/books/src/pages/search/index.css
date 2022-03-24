@@ -11,12 +11,14 @@
 }
 
 .bloco-login-google-seach>form>input {
-    width: 290px;
-    height: 30px;
+    width: 350px;
+    height: 55px;
     border-radius: 3px;
-    border: 1px solid grey;
-    padding-left: 5px;
-    color: rgb(200, 200, 200);
+    background-color: #e9e5e5;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    font-size: 25px;
+    padding: 0 10px 0 10px;
 }
 
 .bloco-login-google-seach>h1 {
@@ -26,13 +28,14 @@
 }
 .bloco-login-google-seach>form>button {
     margin-top: 10px;
-    width: 80px;
-    border-radius: 5px;
+    width: 150px;
     color: aliceblue;
     background: blueviolet;
     border: none;
-    height: 30px;
+    height: 55px;
     cursor: pointer;
+    border-radius: 0 20px 20px 0;
+    font-size: 25px;
 }
 
 .bloco-mostra-livros {
@@ -44,18 +47,17 @@
 }
 
 .bloco-mostra-livros>div{
-    width: 80px;
+    width: 200px;
     margin: 10px 5px 10px 5px;
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    flex-direction: column;
 }
 .capalivro{
-    height: 93px;
-    width: 78px;
+    width: 200px;
+    height: 262px;
+    aspect-ratio: 16/9;
+    border-radius: 20px;
 }
 .tituloLivro{
- font-size: 10px;
- color: grey;
+    font-size: 17px;
+    color: #252525;
+    text-align: start;
 }

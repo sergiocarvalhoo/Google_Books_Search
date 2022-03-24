@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+*{
+    font-family: 'Rubik';
+}
+
 .bloco-detalhes{
     width: 800px;
     height: 100vh;
@@ -10,37 +16,58 @@
     color: blueviolet;
     font-size: 40px;
 }
+
+.bloco-detalhes > a {
+    text-decoration: none;
+    color: #252525
+}
+
 .bloco-info-img{
     display: flex;
     margin-top: 40px;
 }
 .bloco-img>img{
-    width: 200px;
-    height: 300px;
+    width: 300px;
+    height: 362px;
+    border-radius: 20px;
 }
 .bloco-img{
- width: 40%;
- display: flex;
- justify-content: center;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.bloco-img > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    height: 75px;
+}
+
+
 .bloco-info{
     width: 60%;
     display: flex;
     flex-direction: column;
 }
 .bloco-info>h3{
-    color: rgb(146, 146, 146);
+    color: white;
+    background-color: blueviolet;
     font-size: 30px;
     margin-bottom:15px;
+    text-align: center;
 }
 
 .bloco-info>p{
     margin-bottom: 10px;
 }
 .bloco-info>h4{
-   font-size: 15px;
-   margin-top: 5px;
-   margin-bottom: 5px;
+   font-size: 20px;
+   margin-top: 10px;
+   margin-bottom: 10px;
 }
 .bloco-info>textarea{
     height: 80px;
@@ -61,4 +88,39 @@
 
 .bloco-comentario>p{
     margin: 15px 15px;
+}
+
+.title {
+    color: blueviolet;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form > textarea {
+    width: 80%;
+    border: none;
+    background-color: #e9e5e5;
+    padding: 10px;
+    border-radius: 20px 0 0 20px;
+    font-size: 20px;
+}
+
+.form > button {
+    width: 20%;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold;
+    border-radius: 0 20px 20px 0;
+    font-size: 20px;
+}
+
+.descricao::first-letter {
+    font-size: 200%;
+    font-weight: bold;
 }

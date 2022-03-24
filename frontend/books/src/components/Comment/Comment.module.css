@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
+.container {
+    background-color: #e9e5e5;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.infoComment {
+    font-family: 'Rubik';
+    width: 90%;
+    word-wrap: break-word;
+}
+
+.icon {
+    width: 10%;
+}
