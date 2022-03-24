@@ -2,15 +2,19 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import { GoogleLogout } from "react-google-login";
 import { api } from "../../services/api";
+import { Comment } from "../../components/Comment";
 
 function BookDetail() {
+
   const user = JSON.parse(localStorage.getItem("user"));
   const user_id = localStorage.getItem("user_id");
 
   const bookStorage = localStorage.getItem("book");
   const book = JSON.parse(bookStorage);
 
+  const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
+
 
   const handleLogoutFailure = (result) => {
     alert("Unfortunately, logout failed, please try again. \n\n" + result);
@@ -25,20 +29,74 @@ function BookDetail() {
     window.location.href = "/";
   };
 
-  async function handleCreateComment(e) {
+  async function handleCreateComment (e) {
     e.preventDefault();
 
     try {
       const response = await api.post("/comment", {
         user_id: user_id,
+        author: user.name,
         book_id: book.id,
         comment: comment,
       });
-      alert("Comment successfully added!!")
+
+      const { message } = response.data;
+
+      setComment('');
+
+      if (message) {
+        alert(message);
+      } 
+
     } catch (err) {
       alert(err);
     }
   }
+
+  async function handleListCommnets () {
+
+    try {
+
+      const response = await api.get(`/comment/${book.id}`);
+      const { comment, message } = response.data;
+
+      if (!message) {
+        setComments(comment);
+      } else {
+        alert(message);
+      }
+
+    } catch (err) {
+
+      alert(err.message);
+
+    }
+
+  }
+
+  async function handleDeleteComment (comment_id) {
+
+    try {
+
+      const response = await api.delete(`/comment/${comment_id}`);
+      const { message } = response.data;
+  
+      if (message !== "Comment successfully deleted!") {
+        alert(message);
+      }
+
+      window.location.href = '/bookdetail'
+
+    } catch (err) {
+      alert(err);
+    }
+
+  }
+
+  useEffect(() => {
+    handleListCommnets()
+  }, [comment])
+  
 
   return (
     <div className="bloco-detalhes">
@@ -62,6 +120,7 @@ function BookDetail() {
           <form onSubmit={handleCreateComment}>
             <textarea
               type="text"
+              value={comment}
               placeholder="Enter your comment:"
               onChange={(e) => setComment(e.target.value)}
             />
@@ -69,19 +128,22 @@ function BookDetail() {
           </form>
 
           <div className="bloco-comentario">
-            <p>
-              <b>10/02/2022 - JHONNY DOE.</b>o melhor livro do mundo, li e vou
-              ler mais e mais
-            </p>
-            <p>
-              <b>10/03/2022 - JHONNY DOE.</b>o melhor livro do mundo
-            </p>
-            <p>
-              <b>10/05/2022 - JHONNY DOE.</b>o melhor livro do mundo
-            </p>
-            <p>
-              <b>10/08/2022 - JHONNY DOE.</b>o melhor livro do mundo
-            </p>
+           {
+             comments.map((comment, index) => (
+
+              <Comment 
+                key={index}
+                author={comment.author}
+                book_id={comment.book_id}
+                comment_id={comment.id}
+                mensagem={comment.comment}
+                user_id={comment.user_id}
+                deleteComment={handleDeleteComment}
+                userLogged={parseInt(user_id)} //Usuário logado
+              />
+
+             ))
+           }
           </div>
         </div>
       </div>

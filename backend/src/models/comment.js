@@ -10,6 +10,11 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       allowEmpty: false,
     },
+    author: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      allowEmpty: false
+    },
     book_id: {
       type: Sequelize.STRING,
       allowNull: false,

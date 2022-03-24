@@ -4,15 +4,17 @@ const Comment = db.comment;
 
 //  Create
 exports.createComment = async (req, res) => {
-  const { user_id, book_id, comment } = req.body;
+  const { user_id, author, book_id, comment } = req.body;
 
-  console.log(req.body);
+  console.log({
+    user_id, author, book_id, comment
+  })
 
   try {
-    const comment = await Comment.create(req.body);
+    await Comment.create(req.body);
     res.status(201).json(req.body);
   } catch (err) {
-    res.send({ message: err.message });
+    res.json({ message: err.message });
   }
 };
 
